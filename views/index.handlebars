@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
+    {{!-- <title>TEST BURGER</title> --}}
+</head>
+<body>
+
+    <!-- BEGIN container -->
+    <div class="container">
+        <header class="row">
+            <div class="jumbotron text-center">
+                <img src="./assets/img/burger128.png" alt="">   
+                <h1>EAT THAT BURGER!</h1> 
+            </div>
+        </header>
+
+        
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <img src="./assets/img/burger32.png" alt="">
+                            <input id="new-burger-name" type="text" placeholder="Name That Burger!">
+                            <button id="new-burger-button">Submit That Burger!</button>
+                        </div>
+                    </div>                      
+                </div>                    
+            </div>
+
+            <div class="row">
+                <div class="col-md-6" id="ready">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Bring It!</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                {{#each burgers}}
+                                {{#unless devoured}}                               
+                                <li>
+                                    <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">Eat Me!</button>
+                                    <img src="./assets/img/burger32.png" alt="">
+                                    {{burger_name}}
+                                </li>
+                                {{/unless}}                          
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>                  
+                        
+                </div>
+            
+                <div class="col-md-6" id="ready">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Oh, It's Already Been Broughten!</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                            {{#each burgers}}
+                                {{#if devoured}}                               
+                                <li>     
+                                    <button class="change-devoured" data-id="{{id}}" data-devoured="{{devoured}}">Have Another?</button>                              
+                                    <img src="./assets/img/empty.png" alt="">
+                                    {{burger_name}}
+                                </li>
+                                {{/if}}                          
+                            {{/each}}
+                            </ul>
+                        </div>
+                    </div>                       
+                </div>          
+            </div>   
+   <!-- //end container -->
+    </div>    
+</body>
+</html>
